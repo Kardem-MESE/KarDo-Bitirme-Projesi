@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "9759451001",
+    "project_id": "karrdoa",
+    "storage_bucket": "karrdoa.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:9759451001:android:065dbcf1bcaa0e974131a8",
+        "android_client_info": {
+          "package_name": "com.example.karrdoa"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "9759451001-c6u0hrmdbp2vgkdcair4qsip6kj52p5a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCbAJnYMA4F1MrbEQ34T7lHXGlmgphSshg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "9759451001-c6u0hrmdbp2vgkdcair4qsip6kj52p5a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

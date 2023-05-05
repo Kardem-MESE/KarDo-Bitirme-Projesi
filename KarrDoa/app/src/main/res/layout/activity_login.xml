@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoginActivity">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="90dp"
+        android:fontFamily="sans-serif-black"
+        android:text="Login"
+        android:textColor="#C8859C"
+        android:textSize="34sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="212dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/bottom" />
+
+    <ImageView
+        android:id="@+id/imageView13"
+        android:layout_width="31dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="45dp"
+        android:layout_marginEnd="70dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView12"
+        app:srcCompat="@drawable/ic_baseline_lock_24" />
+
+    <ImageView
+        android:id="@+id/imageView12"
+        android:layout_width="39dp"
+        android:layout_height="26dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="70dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView9"
+        app:srcCompat="@drawable/ic_baseline_account_circle_24" />
+
+    <EditText
+        android:id="@+id/editTextUsername"
+        android:layout_width="295dp"
+        android:layout_height="43dp"
+        android:layout_marginStart="70dp"
+        android:layout_marginTop="30dp"
+        android:ems="10"
+        android:fontFamily="sans-serif-black"
+        android:hint="Username"
+        android:inputType="textPersonName"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView9" />
+
+    <EditText
+        android:id="@+id/editTextPassword"
+        android:layout_width="295dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="70dp"
+        android:layout_marginTop="30dp"
+        android:ems="10"
+        android:fontFamily="sans-serif-black"
+        android:hint="Password"
+        android:inputType="textPersonName|textPassword"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextUsername" />
+
+    <Button
+        android:id="@+id/buttonLogin"
+        android:layout_width="163dp"
+        android:layout_height="49dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/buttonbackground"
+        android:fontFamily="sans-serif-black"
+        android:onClick="newpage"
+        android:text="Logın"
+        android:textSize="34sp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="326dp"
+        android:layout_height="37dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/buttonbackground"
+        android:onClick="goregister"
+        android:text="Don't have an account : REGISTER"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/shape" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="70dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textView"
+        app:srcCompat="@drawable/lineee" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
