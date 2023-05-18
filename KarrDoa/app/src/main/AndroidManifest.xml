@@ -14,7 +14,10 @@
         android:theme="@style/Theme.KarrDoa"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity2"
+            android:name=".ProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".EventActivity"
             android:exported="false" />
         <activity
             android:name=".RegisterActivity"

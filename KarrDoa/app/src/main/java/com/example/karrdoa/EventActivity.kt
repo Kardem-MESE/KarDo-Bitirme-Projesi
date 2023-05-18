@@ -2,49 +2,54 @@ package com.example.karrdoa
 
 import android.app.DatePickerDialog
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import android.widget.RadioGroup
 import android.widget.TextView
-import com.example.karrdoa.databinding.ActivityMainBinding
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import com.example.karrdoa.databinding.ActivityEventBinding
 import com.google.firebase.auth.FirebaseAuth
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_event.*
 import java.text.SimpleDateFormat
 import java.util.*
 
-
-class MainActivity : AppCompatActivity() {
+class EventActivity: AppCompatActivity() {
 
     private lateinit var tvDatePicker : TextView
     private lateinit var btnDatePicker : Button
 
-    private lateinit var binding: ActivityMainBinding
+    private lateinit var binding: ActivityEventBinding
     private lateinit var firebaseAuth: FirebaseAuth
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
+        binding = ActivityEventBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val button = findViewById<Button>(R.id.button6)
+        val button = findViewById<Button>(R.id.button13)
         button.setOnClickListener {
             val intent = Intent(this, ProfileActivity::class.java)
             startActivity(intent)
         }
-
-        val button2 = findViewById<Button>(R.id.button2)
+        val button2 = findViewById<Button>(R.id.button12)
         button2.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
+        val button3 = findViewById<Button>(R.id.button11)
+        button3.setOnClickListener {
             val intent = Intent(this, EventActivity::class.java)
             startActivity(intent)
         }
 
-        val button3 = findViewById<Button>(R.id.button5)
-        button3.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
+        radioGroup.setOnCheckedChangeListener { group, checkedId ->
+            if(checkedId == R.id.rbPublic)
+                Toast.makeText(this, rbPublic.text.toString(), Toast.LENGTH_SHORT).show()
+            if(checkedId == R.id.rbPrivate)
+                Toast.makeText(this, rbPrivate.text.toString(), Toast.LENGTH_SHORT).show()
         }
-
-        tvDatePicker = findViewById(R.id.tvDate)
-        btnDatePicker = findViewById(R.id.btnDatePicker)
+        tvDatePicker = findViewById(R.id.tvdate)
+        btnDatePicker = findViewById(R.id.picker)
 
         val myCalendar = Calendar.getInstance()
 
@@ -58,9 +63,7 @@ class MainActivity : AppCompatActivity() {
         btnDatePicker.setOnClickListener {
             DatePickerDialog(this, datePicker, myCalendar.get(Calendar.YEAR), myCalendar.get(Calendar.MONTH), myCalendar.get(Calendar.DAY_OF_MONTH)).show()
         }
-
-        }
-
+    }
     private fun updateLable(myCalendar: Calendar) {
 
         val myFormat = "dd-MM-yyyy"

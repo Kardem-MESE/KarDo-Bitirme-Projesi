@@ -81,7 +81,7 @@
         android:id="@+id/buttonLogin"
         android:layout_width="163dp"
         android:layout_height="49dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="8dp"
         android:background="@drawable/buttonbackground"
         android:fontFamily="sans-serif-black"
         android:onClick="newpage"
