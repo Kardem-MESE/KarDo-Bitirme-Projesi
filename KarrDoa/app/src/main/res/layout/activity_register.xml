@@ -17,64 +17,95 @@
         app:srcCompat="@drawable/bottom" />
 
     <EditText
-        android:id="@+id/email"
-        android:layout_width="289dp"
-        android:layout_height="39dp"
-        android:layout_marginStart="70dp"
-        android:layout_marginTop="15dp"
+        android:id="@+id/lastname"
+        android:layout_width="270dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="72dp"
+        android:layout_marginTop="5dp"
         android:ems="10"
         android:fontFamily="sans-serif-black"
-        android:hint="Enter your email"
+        android:hint="Enter your lastname"
         android:inputType="textPersonName"
+        android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/username" />
+        app:layout_constraintTop_toBottomOf="@+id/firstname" />
 
     <Button
         android:id="@+id/button"
-        android:layout_width="129dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="140dp"
-        android:layout_marginBottom="8dp"
+        android:layout_width="104dp"
+        android:layout_height="33dp"
+        android:layout_marginTop="5dp"
         android:background="@drawable/buttonbackground"
         android:fontFamily="sans-serif-black"
         android:text="Regıster"
         android:textColorHint="#D66088"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView2"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/confirm" />
+
+    <EditText
+        android:id="@+id/email"
+        android:layout_width="279dp"
+        android:layout_height="39dp"
+        android:layout_marginStart="72dp"
+        android:layout_marginTop="5dp"
+        android:ems="10"
+        android:fontFamily="sans-serif-black"
+        android:hint="Enter your email"
+        android:inputType="textPersonName"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/username" />
+
+    <EditText
+        android:id="@+id/firstname"
+        android:layout_width="271dp"
+        android:layout_height="38dp"
+        android:layout_marginStart="72dp"
+        android:layout_marginTop="10dp"
+        android:ems="10"
+        android:fontFamily="sans-serif-black"
+        android:hint="Enter your firstname"
+        android:inputType="textPersonName"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView2" />
+
+    <EditText
+        android:id="@+id/password"
+        android:layout_width="278dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="72dp"
+        android:layout_marginTop="5dp"
+        android:ems="10"
+        android:fontFamily="sans-serif-black"
+        android:hint="Enter your password"
+        android:inputType="textPersonName|textPassword"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/email" />
 
     <EditText
         android:id="@+id/confirm"
-        android:layout_width="289dp"
-        android:layout_height="39dp"
-        android:layout_marginStart="70dp"
-        android:layout_marginTop="15dp"
+        android:layout_width="277dp"
+        android:layout_height="38dp"
+        android:layout_marginStart="72dp"
+        android:layout_marginTop="5dp"
         android:ems="10"
         android:fontFamily="sans-serif-black"
         android:hint="Confirm your password"
         android:inputType="textPersonName|textPassword"
+        android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/password" />
-
-    <EditText
-        android:id="@+id/username"
-        android:layout_width="289dp"
-        android:layout_height="39dp"
-        android:layout_marginStart="70dp"
-        android:layout_marginTop="30dp"
-        android:ems="10"
-        android:fontFamily="sans-serif-black"
-        android:hint="Enter your username"
-        android:inputType="textPersonName"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView2" />
 
     <ImageView
         android:id="@+id/imageView8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="70dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="68dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView7"
         app:srcCompat="@drawable/ic_baseline_lock_24" />
@@ -83,18 +114,18 @@
         android:id="@+id/imageView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="70dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="68dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView5"
+        app:layout_constraintTop_toBottomOf="@+id/imageView30"
         app:srcCompat="@drawable/ic_baseline_email_24" />
 
     <ImageView
         android:id="@+id/imageView7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="70dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="68dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView6"
         app:srcCompat="@drawable/ic_baseline_lock_24" />
@@ -103,24 +134,45 @@
         android:id="@+id/imageView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="70dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="68dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView29"
+        app:srcCompat="@drawable/ic_baseline_account_circle_24" />
+
+    <ImageView
+        android:id="@+id/imageView29"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="13dp"
+        android:layout_marginEnd="68dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/imageView2"
         app:srcCompat="@drawable/ic_baseline_account_circle_24" />
 
+    <ImageView
+        android:id="@+id/imageView30"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="68dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView5"
+        app:srcCompat="@drawable/ic_baseline_account_circle_24" />
+
     <EditText
-        android:id="@+id/password"
-        android:layout_width="292dp"
-        android:layout_height="39dp"
-        android:layout_marginStart="70dp"
-        android:layout_marginTop="15dp"
+        android:id="@+id/username"
+        android:layout_width="276dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="72dp"
+        android:layout_marginTop="5dp"
         android:ems="10"
         android:fontFamily="sans-serif-black"
-        android:hint="Enter your password"
-        android:inputType="textPersonName|textPassword"
+        android:hint="Enter your username"
+        android:inputType="textPersonName"
+        android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/email" />
+        app:layout_constraintTop_toBottomOf="@+id/lastname" />
 
     <TextView
         android:id="@+id/textView2"

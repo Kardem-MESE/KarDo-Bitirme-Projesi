@@ -4,12 +4,10 @@ import android.app.DatePickerDialog
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
-import android.widget.RadioGroup
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.karrdoa.databinding.ActivityEventBinding
-import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_event.*
 import java.text.SimpleDateFormat
 import java.util.*
@@ -20,7 +18,6 @@ class EventActivity: AppCompatActivity() {
     private lateinit var btnDatePicker : Button
 
     private lateinit var binding: ActivityEventBinding
-    private lateinit var firebaseAuth: FirebaseAuth
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityEventBinding.inflate(layoutInflater)
