@@ -50,11 +50,11 @@
         android:id="@+id/imageView48"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="396dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="35dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.411"
+        app:layout_constraintHorizontal_bias="0.49"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup"
         app:srcCompat="@drawable/homeline" />
 
     <Button
@@ -121,7 +121,7 @@
         app:srcCompat="@drawable/ic_baseline_calendar_month" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/plan"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="120dp"
@@ -138,14 +138,14 @@
         android:id="@+id/tvdate"
         android:layout_width="200dp"
         android:layout_height="43dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="167dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="164dp"
         android:text="Select the date of your plan:"
         android:textColor="#050505"
         android:textSize="16sp"
         android:textStyle="normal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
+        app:layout_constraintTop_toBottomOf="@+id/plan" />
 
     <Button
         android:id="@+id/picker"
@@ -156,7 +156,18 @@
         android:background="@drawable/buttonbackground"
         android:text="Date Pıcker"
         app:layout_constraintStart_toEndOf="@+id/tvdate"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
+        app:layout_constraintTop_toBottomOf="@+id/plan" />
+
+    <Button
+        android:id="@+id/create"
+        android:layout_width="132dp"
+        android:layout_height="21dp"
+        android:layout_marginStart="132dp"
+        android:layout_marginTop="104dp"
+        android:background="@drawable/buttonbackground"
+        android:text="CREATE"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/plan" />
 
     <ImageView
         android:id="@+id/imageView37"
@@ -224,17 +235,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView37"
         app:srcCompat="@drawable/ic_baseline_visibility_24" />
-
-    <TextView
-        android:id="@+id/textView12"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="15dp"
-        android:text="MY PLANS"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView48" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -53,7 +53,9 @@ class MainActivity : AppCompatActivity() {
             if (token != null) {
                 event(token = token)
             } else {
-                // LOGIN PAGE YOLLA
+                val intent = Intent(this@MainActivity, LoginActivity::class.java)
+                startActivity(intent)
+                finish()
             }
         }
     }

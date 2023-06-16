@@ -1,15 +1,8 @@
 package com.example.karrdoa
 
-import android.app.usage.UsageEvents
-import okhttp3.OkHttpClient
 import okhttp3.ResponseBody
 import retrofit2.Call
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.Header
-import retrofit2.http.POST
+import retrofit2.http.*
 
 interface ApiService {
     @POST("/api/User/login")
@@ -23,4 +16,13 @@ interface ApiService {
     @GET("/api/Event/get-event-all")
     @JvmSuppressWildcards
     fun getEvents(@Header("Authorization") token: String): Call<ResponseBody>
+
+    @GET("/api/Event/get-event-by-user-id")
+    @JvmSuppressWildcards
+    fun getEventsbyId(@Header("Authorization") token: String): Call<ResponseBody>
+
+    @POST("/api/Event/create-event")
+    @JvmSuppressWildcards
+    fun createEvent(@Body body: Map<String, Any>, @Header("Authorization") token: String): Call<ResponseBody>
+
 }
