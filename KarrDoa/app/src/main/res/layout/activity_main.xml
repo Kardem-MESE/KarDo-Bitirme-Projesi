@@ -81,20 +81,6 @@
         app:layout_constraintTop_toBottomOf="@+id/textView3"
         app:srcCompat="@drawable/lineee" />
 
-    <Button
-        android:id="@+id/list"
-        android:layout_width="105dp"
-        android:layout_height="27dp"
-        android:layout_marginTop="50dp"
-        android:background="@drawable/buttonbackground"
-        android:text="List All Plans"
-        android:textAllCaps="false"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.084"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView15" />
-
     <ImageView
         android:id="@+id/imageView18"
         android:layout_width="wrap_content"
@@ -135,5 +121,13 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/ic_baseline_calendar_month" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvMain"
+        android:layout_width="411dp"
+        android:layout_height="395dp"
+        app:layout_constraintBottom_toTopOf="@+id/imageView23"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView18" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

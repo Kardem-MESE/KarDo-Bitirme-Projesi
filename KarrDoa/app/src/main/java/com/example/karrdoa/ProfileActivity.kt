@@ -5,7 +5,9 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import kotlinx.android.synthetic.main.activity_profile.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import okhttp3.ResponseBody
@@ -16,9 +18,17 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 class ProfileActivity :AppCompatActivity() {
+    private lateinit var name: TextView
+    private lateinit var profilusername: TextView
+    private lateinit var profilemail: TextView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
+
+        name = findViewById(R.id.name)
+        profilusername = findViewById(R.id.profilusername)
+        profilemail = findViewById(R.id.profilemail)
 
         val button = findViewById<Button>(R.id.button7)
         button.setOnClickListener {
@@ -35,20 +45,26 @@ class ProfileActivity :AppCompatActivity() {
             val intent = Intent(this, ProfileActivity::class.java)
             startActivity(intent)
         }
-        val button10 = findViewById<Button>(R.id.button10)
-        button10.setOnClickListener {
-            val intent = Intent(this, LoginActivity::class.java)
-            startActivity(intent)
-        }
-
 
         val sharedPref = applicationContext.getSharedPreferences(
             "mySharedPreferences",
             Context.MODE_PRIVATE
         )
+
+        val button10 = findViewById<Button>(R.id.button10)
+        button10.setOnClickListener {
+            val editor = sharedPref.edit()
+            editor.putString("token", null)
+            editor.apply()
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+        }
+
         val token = sharedPref.getString("token", null)
         if (token != null) {
-            eventbyId(token = token)
+            getUser(token = token)
+            // GET USER INFO
+            // https://localhost:7017/api/User
         } else {
             val intent = Intent(this@ProfileActivity, LoginActivity::class.java)
             startActivity(intent)
@@ -56,7 +72,7 @@ class ProfileActivity :AppCompatActivity() {
         }
     }
 
-    private fun eventbyId(token: String): ApiService {
+    private fun getUser(token: String){
         val okHttpClient = CustomOkHttpClient().create()
 
         val retrofit = Retrofit.Builder()
@@ -67,33 +83,30 @@ class ProfileActivity :AppCompatActivity() {
 
         val apiService = retrofit.create(ApiService::class.java)
 
-        apiService.getEventsbyId("Bearer $token").enqueue(object : Callback<ResponseBody> {
-            override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
-                if (response.isSuccessful) {
-                    val jsonResponse = response.body()?.string()
-                    println("jsonResponse = " + jsonResponse)
+        apiService.getUser("Bearer $token").enqueue(object : Callback<ProfileResponse> {
+            override fun onResponse(call: Call<ProfileResponse>, response: Response<ProfileResponse>) {
+                if(response.isSuccessful) {
+                    val getUserItem = response.body()
+                    if(getUserItem != null){
+                        name.text = "Name: ${getUserItem.fullName}"
+                        profilusername.text = "Username: ${getUserItem.userName}"
+                        profilemail.text = "Email: ${getUserItem.email}"
+                    }
                 }
             }
 
-            override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
-                throw t
+            override fun onFailure(call: Call<ProfileResponse>, t: Throwable) {
+                TODO("Not yet implemented")
             }
 
-        }
-        )
-        return retrofit.create(ApiService::class.java)
+
+        })
     }
 
-    suspend fun getEventsbyId(token: String): List<UsageEvents.Event> {
-        return withContext(Dispatchers.IO) {
-            try {
-                val apiService = eventbyId(token) // ApiService'yi oluştur
-                val response = apiService.getEvents("Bearer $token")
-                return@withContext emptyList()
-            } catch (e: Exception) {
-                // Hata durumunda yapılacak işlemleri buraya ekleyebilirsiniz
-                return@withContext emptyList()
-            }
-        }
+    private fun showProfileData(profileResponse: ProfileResponse) {
+        name.text = profileResponse.fullName
+        profilusername.text = profileResponse.userName
+        profilemail.text = profileResponse.email
     }
+
 }

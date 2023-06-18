@@ -6,6 +6,8 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.activity_event.*
 import okhttp3.ResponseBody
 import retrofit2.Call
@@ -17,6 +19,8 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 class EventActivity: AppCompatActivity() {
+
+    private lateinit var rvevent : RecyclerView
 
     private lateinit var tvDatePicker : TextView
     private lateinit var btnDatePicker : Button
@@ -30,6 +34,10 @@ class EventActivity: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_event)
 
+        rvevent = findViewById(R.id.recyclerView)
+        val linearLayoutManager = LinearLayoutManager(applicationContext)
+        rvevent.layoutManager = linearLayoutManager
+
         tvDatePicker = findViewById(R.id.tvdate)
 
         create.setOnClickListener {
@@ -37,15 +45,13 @@ class EventActivity: AppCompatActivity() {
             rbEventshowtype = findViewById(R.id.rbPublic)
             rbEventshowtype1 = findViewById(R.id.rbPrivate)
 
-
-
             var isStatus = "Private"
-            if(rbEventshowtype.isChecked() && !rbEventshowtype1.isChecked()) {
+            if(rbEventshowtype.isChecked && !rbEventshowtype1.isChecked) {
                 isStatus = "Public"
             }
 
             val eventName = etEventName.text.toString().trim()
-            var date = tvDatePicker.text.toString()
+            val date = tvDatePicker.text.toString()
 
             val body = mapOf(
                 "name" to eventName,
@@ -57,9 +63,10 @@ class EventActivity: AppCompatActivity() {
                 "mySharedPreferences",
                 Context.MODE_PRIVATE
             )
+
             val token = sharedPref.getString("token", null)
             if (token != null) {
-                deneme(body = body, token = token)
+                createEvents(body = body, token = token)
             } else {
                 val intent = Intent(this@EventActivity, LoginActivity::class.java)
                 startActivity(intent)
@@ -105,9 +112,52 @@ class EventActivity: AppCompatActivity() {
             DatePickerDialog(this, datePicker, myCalendar.get(Calendar.YEAR), myCalendar.get(Calendar.MONTH), myCalendar.get(Calendar.DAY_OF_MONTH)).show()
         }
 
+        val sharedPref = applicationContext.getSharedPreferences(
+            "mySharedPreferences",
+            Context.MODE_PRIVATE
+        )
 
+        val token = sharedPref.getString("token", null)
+        if (token != null) {
+            getAllEvents(token = token)
+        } else {
+            val intent = Intent(this@EventActivity, LoginActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
     }
-    private fun deneme(body: Map<String, Any>, token: String): ApiService {
+
+    private fun getAllEvents(token: String) {
+        val okHttpClient = CustomOkHttpClient().create()
+
+        val retrofit = Retrofit.Builder()
+            .client(okHttpClient)
+            .baseUrl("https://192.168.1.39:7017")
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+
+        val apiService = retrofit.create(ApiService::class.java)
+
+        apiService.getEventsbyId("Bearer $token").enqueue(object : Callback<List<EventsItem>> {
+            override fun onResponse(call: Call<List<EventsItem>>, response: Response<List<EventsItem>>) {
+                if(response.isSuccessful){
+                    val eventsItemMainList = response.body()
+
+                    if(eventsItemMainList != null && eventsItemMainList.isNotEmpty()) {
+                        val recAdapter = UserEventsAdapter(context = this@EventActivity, events = eventsItemMainList)
+                        rvevent.adapter = recAdapter
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<List<EventsItem>>, t: Throwable) {
+                TODO("Not yet implemented")
+            }
+
+        })
+    }
+
+    private fun createEvents(body: Map<String, Any>, token: String) {
         val okHttpClient = CustomOkHttpClient().create()
 
         val retrofit = Retrofit.Builder()
@@ -120,24 +170,23 @@ class EventActivity: AppCompatActivity() {
 
         apiService.createEvent(body, "Bearer $token").enqueue(object : Callback<ResponseBody> {
             override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
-                if (response.isSuccessful) {
-                    val jsonResponse = response.body()?.string()
-                    println("jsonResponse = " + jsonResponse)
+                if(response.isSuccessful){
+                    val body = response.body()?.string()
+                    println(body)
+
+                    getAllEvents(token)
                 }
             }
 
             override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
-                throw t
+                TODO("HANDLE NOT SUCCESSFUL")
             }
         })
-        return retrofit.create(ApiService::class.java)
     }
 
     private fun updateLable(myCalendar: Calendar) {
-
         val myFormat = "yyyy-MM-dd"
         val sdf = SimpleDateFormat(myFormat, Locale.UK)
-        tvDatePicker.setText(sdf.format(myCalendar.time))
-
+        tvDatePicker.text = sdf.format(myCalendar.time)
     }
 }

@@ -67,8 +67,8 @@ class RegisterActivity : AppCompatActivity() {
             }else{
                 //Toast.makeText(this, "Registeration completed", Toast.LENGTH_SHORT).show()
                 register(firstname, lastname, username, email, passwordHash, passwordVerify)
+                Toast.makeText(this, "Registeration completed", Toast.LENGTH_SHORT).show()
             }
-
         }
 
         button4.setOnClickListener {

@@ -69,28 +69,6 @@ class LoginActivity : AppCompatActivity() {
 
         apiService.loginRequest(body).enqueue(object : Callback<ResponseBody> {
             override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
-                // TOKEN TUTMAN LAZIM YA DEPOLAMADA YA DA BIR DEGISKENDE
-                /*val retrofit = Retrofit.Builder()
-                    .baseUrl("https://192.168.1.39:7017")
-                    .client(
-                        OkHttpClient.Builder()
-                            .addInterceptor { chain ->
-                                val request = chain.request().newBuilder()
-                                    .addHeader("Authorization", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiI3NDFkYmMwMi03YWQ4LTQwNjAtOTc3NC0xMWRkYWY2NTc3MzgiLCJ1bmlxdWVfbmFtZSI6ImthciIsImVtYWlsIjoiYWFhQGdtYWlsLmNvbSIsIm5iZiI6MTY4NjU1OTcyMCwiZXhwIjoxNjg2NTYxNTIwLCJpYXQiOjE2ODY1NTk3MjAsImlzcyI6Ikp3dFRva2VuV2l0aElkZW50aXR5IiwiYXVkIjoiSnd0VG9rZW5XaXRoSWRlbnRpdHkifQ.FXyOyrfaQy2Y9oHrab9fvz1k7utE8zNkhafhYptp_Yk")
-                                    .build()
-                                chain.proceed(request)
-                            }
-                            .build()
-                    )
-                    .addConverterFactory(GsonConverterFactory.create())
-                    .build()
-
-                 */
-
-                //println(response.message())
-                //println(response.body()?.string())
-                //println(response.code())
-
                 if (response.isSuccessful) {
                     val jsonResponse = response.body()?.string()
                     //val jsonObject = JSONObject(jsonResponse)
@@ -100,12 +78,9 @@ class LoginActivity : AppCompatActivity() {
 
                     if (loginResponse != null) {
                         val token = loginResponse.token
-                       // println(token)
-                        // Tokeni kaydet ve ana sayfaya yönlendir
                         saveToken(token)
                         navigateToMainPage()
                     } else {
-                        // Hatalı yanıt durumunu ele al
                         handleLoginError()
                     }
                 }/* else {

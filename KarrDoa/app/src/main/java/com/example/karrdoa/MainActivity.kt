@@ -6,6 +6,8 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.karrdoa.databinding.ActivityMainBinding
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.Dispatchers
@@ -20,11 +22,17 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class MainActivity : AppCompatActivity() {
 
+    private lateinit var rvMain: RecyclerView
+
     private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        rvMain = findViewById(R.id.rvMain)
+        val linearLayoutManager = LinearLayoutManager(applicationContext)
+        rvMain.layoutManager = linearLayoutManager
 
 
         val button = findViewById<Button>(R.id.button6)
@@ -44,20 +52,52 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
-        list.setOnClickListener {
-            val sharedPref = applicationContext.getSharedPreferences(
-                "mySharedPreferences",
-                Context.MODE_PRIVATE
-            )
-            val token = sharedPref.getString("token", null)
-            if (token != null) {
-                event(token = token)
-            } else {
-                val intent = Intent(this@MainActivity, LoginActivity::class.java)
-                startActivity(intent)
-                finish()
-            }
+
+        val sharedPref = applicationContext.getSharedPreferences(
+            "mySharedPreferences",
+            Context.MODE_PRIVATE
+        )
+
+        val token = sharedPref.getString("token", null)
+        if (token != null) {
+            getAllEvents(token = token)
+        } else {
+            val intent = Intent(this@MainActivity, LoginActivity::class.java)
+            startActivity(intent)
+            finish()
         }
+    }
+
+    private fun getAllEvents(token: String) {
+        val okHttpClient = CustomOkHttpClient().create()
+
+        val retrofit = Retrofit.Builder()
+            .client(okHttpClient)
+            .baseUrl("https://192.168.1.39:7017")
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+
+        val apiService = retrofit.create(ApiService::class.java)
+
+        apiService.getEvents("Bearer $token").enqueue(object : Callback<List<EventsItem>> {
+            override fun onResponse(call: Call<List<EventsItem>>, response: Response<List<EventsItem>>) {
+                if(response.isSuccessful){
+                    val eventsItemMainList = response.body()
+//                    eventsItemList.stream().map()
+//                    eventsItemList?.forEach()
+
+                    if(eventsItemMainList != null && eventsItemMainList.isNotEmpty()) {
+                        val recAdapter = EventsAdapter(context = this@MainActivity, events = eventsItemMainList)
+                        rvMain.adapter = recAdapter
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<List<EventsItem>>, t: Throwable) {
+                TODO("Not yet implemented")
+            }
+
+        })
     }
 
     private fun event(token: String): ApiService {
@@ -71,20 +111,18 @@ class MainActivity : AppCompatActivity() {
 
         val apiService = retrofit.create(ApiService::class.java)
 
-        apiService.getEvents("Bearer $token").enqueue(object : Callback<ResponseBody> {
-            override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
-                if (response.isSuccessful) {
-                    val jsonResponse = response.body()?.string()
-                    println("jsonResponse = " + jsonResponse)
+        apiService.getEvents("Bearer $token").enqueue(object : Callback<List<EventsItem>> {
+            override fun onResponse(call: Call<List<EventsItem>>, response: Response<List<EventsItem>>) {
+                if(response.isSuccessful){
+                    val body = response.body()
                 }
             }
 
-            override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
-                throw t
+            override fun onFailure(call: Call<List<EventsItem>>, t: Throwable) {
+                TODO("Not yet implemented")
             }
 
-        }
-        )
+        })
         return retrofit.create(ApiService::class.java)
 }
 

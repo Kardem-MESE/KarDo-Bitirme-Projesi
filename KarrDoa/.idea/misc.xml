@@ -12,7 +12,7 @@
         <entry key="..\:/Users/Nisan Kardem/AndroidStudioProjects/KarrDoa/app/src/main/res/layout/activity_login.xml" value="0.2504528985507246" />
         <entry key="..\:/Users/Nisan Kardem/AndroidStudioProjects/KarrDoa/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/Users/Nisan Kardem/AndroidStudioProjects/KarrDoa/app/src/main/res/layout/activity_main2.xml" value="0.223731884057971" />
-        <entry key="..\:/Users/Nisan Kardem/AndroidStudioProjects/KarrDoa/app/src/main/res/layout/activity_profile.xml" value="0.22916666666666666" />
+        <entry key="..\:/Users/Nisan Kardem/AndroidStudioProjects/KarrDoa/app/src/main/res/layout/activity_profile.xml" value="0.264" />
         <entry key="..\:/Users/Nisan Kardem/AndroidStudioProjects/KarrDoa/app/src/main/res/layout/activity_register.xml" value="0.2504528985507246" />
         <entry key="..\:/Users/Nisan Kardem/AndroidStudioProjects/KarrDoa/app/src/main/res/layout/fragment_calendar.xml" value="0.21851851851851853" />
         <entry key="..\:/Users/Nisan Kardem/AndroidStudioProjects/KarrDoa/app/src/main/res/layout/fragment_first.xml" value="0.21851851851851853" />
@@ -20,6 +20,11 @@
         <entry key="..\:/Users/Nisan Kardem/AndroidStudioProjects/KarrDoa/app/src/main/res/layout/fragment_profile.xml" value="0.21851851851851853" />
         <entry key="..\:/Users/Nisan Kardem/AndroidStudioProjects/KarrDoa/app/src/main/res/layout/fragment_second.xml" value="0.2504528985507246" />
         <entry key="..\:/Users/Nisan Kardem/AndroidStudioProjects/KarrDoa/app/src/main/res/layout/fragment_third.xml" value="0.21851851851851853" />
+        <entry key="..\:/Users/Nisan Kardem/AndroidStudioProjects/KarrDoa/app/src/main/res/layout/item_layout.xml" value="0.4" />
+        <entry key="..\:/Users/Nisan Kardem/AndroidStudioProjects/KarrDoa/app/src/main/res/layout/itemmain_layout.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Nisan Kardem/AndroidStudioProjects/KarrDoa/app/src/main/res/layout/list_event.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Nisan Kardem/AndroidStudioProjects/KarrDoa/app/src/main/res/layout/mainitem_layout.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Nisan Kardem/AndroidStudioProjects/KarrDoa/app/src/main/res/layout/user_item_layout.xml" value="0.4" />
         <entry key="..\:/Users/Nisan Kardem/AndroidStudioProjects/KarrDoa/app/src/main/res/menu/bottom_nav.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Nisan Kardem/AndroidStudioProjects/KarrDoa/app/src/main/res/menu/menu.xml" value="0.25416666666666665" />
       </map>
