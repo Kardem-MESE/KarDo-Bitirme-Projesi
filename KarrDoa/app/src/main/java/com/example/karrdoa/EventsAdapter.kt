@@ -32,7 +32,7 @@ class EventsAdapter(val context: Context, private val events: List<EventsItem>, 
         if(uNameJoin != null && uNameJoin.isNotEmpty()){
             holder.joinNames.text = uNameJoin.joinToString(prefix = "", postfix = "", separator = ",")
         } else {
-            holder.joinNames.text = ""
+            holder.joinNames.text = "-"
         }
 
         holder.join.setOnClickListener{

@@ -71,41 +71,31 @@ class LoginActivity : AppCompatActivity() {
             override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
                 if (response.isSuccessful) {
                     val jsonResponse = response.body()?.string()
-                    //val jsonObject = JSONObject(jsonResponse)
-                    //val token = jsonObject.getString("token")
-                    val loginResponse = Gson().fromJson(jsonResponse, LoginResponse::class.java)
-                    println(jsonResponse)
 
-                    if (loginResponse != null) {
-                        val token = loginResponse.token
-                        saveToken(token)
-                        navigateToMainPage()
-                    } else {
-                        handleLoginError()
+                    val jsonObject = jsonResponse?.let { JSONObject(it) }
+                    val token = jsonObject?.optString("token")
+
+                    if(token != null){
+                        if(token.isEmpty()){
+                            handleLoginError()
+                        } else {
+                            saveToken(token)
+                            navigateToMainPage()
+                        }
                     }
-                }/* else {
-                    // İstek başarısız olduysa hata durumunu ele al
+                }else {
                     handleLoginError()
                 }
-                */
-
             }
             override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
-                //throw t
                 handleLoginError()
             }
-             private fun handleLoginError() {
-                // Hata durumuna göre işlemler yapabilirsiniz
-                // Örneğin, bir Toast mesajı gösterebilirsiniz:
+            private fun handleLoginError() {
                 Toast.makeText(applicationContext, "Login failed. Please try again.", Toast.LENGTH_SHORT).show()
 
-                // Giriş ekranındaki hatalı girişleri temizleyebilirsiniz:
                 clearLoginInputs()
             }
             fun clearLoginInputs() {
-                // Giriş ekranındaki giriş alanlarını temizleyin
-                //etUsername.text.clear()
-                //etPassword.text.clear()
                 val etUsername = findViewById<EditText>(R.id.editTextUsername)
                 val etPassword = findViewById<EditText>(R.id.editTextPassword)
                 etUsername.text.clear()
@@ -123,7 +113,7 @@ class LoginActivity : AppCompatActivity() {
             fun navigateToMainPage() {
                     val intent = Intent(this@LoginActivity, MainActivity::class.java)
                     startActivity(intent)
-                    finish() // Eğer login aktivitesinden çıkış yapacaksanız, login aktivitesini sonlandırabilirsiniz.
+                    finish()
             }
         })
 
