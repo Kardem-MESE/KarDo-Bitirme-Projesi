@@ -54,6 +54,9 @@ class RegisterActivity : AppCompatActivity() {
             }else if(email.isEmpty()){
                 etEmail.error = "Email required"
                 return@setOnClickListener
+            }else if(!email.contains("@")){
+                Toast.makeText(applicationContext, "Invalid email address", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
             }else if(passwordHash.isEmpty()){
                 etPasswordhash.error = "Password required"
                 return@setOnClickListener

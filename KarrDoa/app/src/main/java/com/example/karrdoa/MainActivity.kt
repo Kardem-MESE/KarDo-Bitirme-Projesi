@@ -24,11 +24,11 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var rvMain: RecyclerView
 
-    private lateinit var binding: ActivityMainBinding
+    //private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        //binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(R.layout.activity_main)
 
         rvMain = findViewById(R.id.rvMain)
         val linearLayoutManager = LinearLayoutManager(applicationContext)
@@ -87,7 +87,7 @@ class MainActivity : AppCompatActivity() {
 //                    eventsItemList?.forEach()
 
                     if(eventsItemMainList != null && eventsItemMainList.isNotEmpty()) {
-                        val recAdapter = EventsAdapter(context = this@MainActivity, events = eventsItemMainList)
+                        val recAdapter = EventsAdapter(context = this@MainActivity, events = eventsItemMainList, token = token)
                         rvMain.adapter = recAdapter
                     }
                 }

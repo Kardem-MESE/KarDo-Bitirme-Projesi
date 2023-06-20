@@ -39,7 +39,7 @@ class LoginActivity : AppCompatActivity() {
             } else if (password.isEmpty()) {
                 etPassword.error = "Password required"
                 return@setOnClickListener
-            } else {
+            }else {
                 login(username, password)
             }
         }

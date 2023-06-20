@@ -11,38 +11,71 @@
     <TextView
         android:id="@+id/eventName"
         style="@style/TextAppearance.AppCompat.Headline"
-        android:layout_width="383dp"
-        android:layout_height="37dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="20dp"
+        android:layout_width="167dp"
+        android:layout_height="26dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="15dp"
         android:layout_weight="1"
         android:text="eventName"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView7"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/eventDate"
         style="@style/TextAppearance.AppCompat.Body1"
-        android:layout_width="383dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
+        android:layout_width="238dp"
+        android:layout_height="21dp"
+        android:layout_marginStart="68dp"
         android:layout_marginTop="15dp"
         android:layout_weight="1"
         android:text="eventDate"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView5"
         app:layout_constraintTop_toBottomOf="@+id/eventName" />
 
     <TextView
         android:id="@+id/showType"
         style="@style/TextAppearance.AppCompat.Body1"
-        android:layout_width="384dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="15dp"
+        android:layout_width="250dp"
+        android:layout_height="22dp"
+        android:layout_marginStart="27dp"
+        android:layout_marginTop="17dp"
         android:layout_weight="1"
         android:text="showType"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView6"
         app:layout_constraintTop_toBottomOf="@+id/eventDate" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="17dp"
+        android:text="Event Date:"
+        android:textColor="#000000"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView7" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="18dp"
+        android:text="Event Show Type:"
+        android:textColor="#000000"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="20dp"
+        android:text="Event Name:"
+        android:textColor="#000000"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

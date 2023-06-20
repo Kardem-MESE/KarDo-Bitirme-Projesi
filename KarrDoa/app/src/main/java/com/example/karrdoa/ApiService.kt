@@ -27,7 +27,7 @@ interface ApiService {
 
     @POST("/api/Event/user-event-join")
     @JvmSuppressWildcards
-    fun eventJoin(@Body body: Map<String, Any>, @Header("Authorization") token: String): Call<ResponseBody>
+    fun eventJoin(@Body body: Map<String, Any>, @Header("Authorization") token: String): Call<List<String>>
 
     @GET("/api/User")
     @JvmSuppressWildcards
